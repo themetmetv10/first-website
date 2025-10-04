@@ -1,5 +1,5 @@
 # first-website
-🧵 Ürün Adı: ECOFIBRA
+
 💡 Ürün Tanımı:
 
 Ecofibra, doğada tamamen çözünebilen, yosun ve portakal kabuğu liflerinden üretilen yenilikçi bir tekstil ipliğidir.
