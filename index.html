@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modanın Gölge Yüzü - Tekstil Endüstrisinin Zararları</title>
+    <style>
+        /* ===== TEMEL STİLLER VE SIFIRLAMA ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* ===== GEZİNME ÇUBUĞU ===== */
+        .navbar {
+            background-color: #2c3e50;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: #e74c3c;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #ecf0f1;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link:hover {
+            color: #e74c3c;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #e74c3c;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ===== KAHRAMAN BÖLÜMÜ ===== */
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1601924582970-9238bcb495d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== PROBLEMLER BÖLÜMÜ ===== */
+        .problems-section {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .problems-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .problem-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid #e74c3c;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            text-align: center;
+            padding: 20px 0;
+            color: #e74c3c;
+        }
+
+        .problem-content {
+            padding: 20px;
+        }
+
+        .problem-content h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .problem-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .problem-stats {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .problem-stats p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        /* ===== ÇEVRE ZARARLARI ===== */
+        .environment-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a5276 0%, #2c3e50 100%);
+            color: white;
+        }
+
+        .environment-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .environment-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .environment-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .environment-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== SOSYAL ETKİLER ===== */
+        .social-section {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+
+        .social-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .social-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-content h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .social-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* ===== ÇÖZÜMLER BÖLÜMÜ ===== */
+        .solutions-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+        }
+
+        .solutions-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .solution-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .solution-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .solution-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .solution-card p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* ===== EYLEM ÇAĞRISI ===== */
+        .action-section {
+            padding: 100px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .action-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .action-content h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .action-content p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .action-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .action-button.secondary {
+            background-color: #3498db;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .action-button.secondary:hover {
+            background-color: #2980b9;
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        /* ===== ALT BİLGİ ===== */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE TASARIM ===== */
+        @media (max-width: 992px) {
+            .problems-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .solutions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .problems-grid,
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .environment-grid,
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-section {
+                padding: 80px 0;
+            }
+            
+            .problems-section,
+            .environment-section,
+            .social-section,
+            .solutions-section,
+            .action-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Gezinme Çubuğu -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Modanın Gölge Yüzü</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Çevresel Etkiler</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Sosyal Etkiler</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Çözümler</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Kaynaklar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Kahraman Bölümü -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <h1 class="hero-title">Moda Endüstrisinin Karanlık Yüzü</h1>
+            <p class="hero-subtitle">Hızlı moda, gezegenimizi ve toplumları nasıl etkiliyor? Gerçekleri öğrenin ve değişimin bir parçası olun.</p>
+        </div>
+    </section>
+
+    <!-- Problemler Bölümü -->
+    <section class="problems-section">
+        <div class="section-header">
+            <h2>Tekstil Endüstrisinin Başlıca Sorunları</h2>
+            <p>Moda dünyasının görünmeyen maliyetleri</p>
+        </div>
+        <div class="problems-grid">
+            <div class="problem-card">
+                <div class="problem-icon">💧</div>
+                <div class="problem-content">
+                    <h3>Su Kirliliği</h3>
+                    <p>Tekstil endüstrisi, dünyadaki endüstriyel su kirliliğinin %20'sinden sorumludur. Boyama ve işleme süreçleri zehirli kimyasalları su kaynaklarına karıştırır.</p>
+                    <div class="problem-stats">
+                        <p>📊 1 pamuklu tişört = 2.700 litre su</p>
+                        <p>📊 1 kot pantolon = 7.500 litre su</p>
+                    </div>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🏭</div>
+                <div class="problem-content">
+                    <h3>Karbon Salınımı</h3>
+                    <p>Moda endüstrisi, küresel karbon salınımının %10'unu oluşturur. Bu, uluslararası uçuşlar ve deniz taşımacılığının toplamından daha fazladır.</p>
+                    <div class="problem-stats">
+                        <p>📊 Yıllık 1.2 milyar ton CO₂</p>
+                        <p>📊 2050'ye kadar %50 artış bekleniyor</p>
+                    </div>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🗑️</div>
+                <div class="problem-content">
+                    <h3>Atık Krizi</h3>
+                    <p>Her yıl 92 milyon ton tekstil atığı oluşuyor. Hızlı moda ürünlerinin çoğu sadece birkaç kez giyildikten sonra çöpe atılıyor.</p>
+                    <div class="problem-stats">
+                        <p>📊 Saniyede 1 çöp kamyonu tekstil atığı</p>
+                        <p>📊 %87'si yakılıyor veya çöplükte</p>
+                    </div>
+                </div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">👷</div>
+                <div class="problem-content">
+                    <h3>Sömürücü Çalışma Koşulları</h3>
+                    <p>Tekstil işçilerinin %80'i kadın olup, çoğu asgari ücretin altında, güvences
